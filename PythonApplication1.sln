@@ -1,23 +1,53 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.9.34714.143
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonApplication1", "PythonApplication1.pyproj", "{EDCAFB27-4CEE-4CF6-99AA-66926C94AF05}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EDCAFB27-4CEE-4CF6-99AA-66926C94AF05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EDCAFB27-4CEE-4CF6-99AA-66926C94AF05}.Release|Any CPU.ActiveCfg = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2BF4E18B-77C7-4F58-881A-08CC42054092}
-	EndGlobalSection
-EndGlobal
+﻿tasks = []
+def addTask():
+  task = input("Please enter a task: ")
+  tasks.append(task)
+  print(f"Task '{task}' added to the list.")
+
+
+def listTasks():
+  if not tasks:
+    print("There are no tasks currently.")
+  else:
+    print("Current Tasks:")
+    for index, task in enumerate(tasks):
+      print(f"Task #{index}. {task}")
+
+
+def deleteTask():
+  listTasks()
+  try:
+    taskToDelete = int(input("Enter the # to delete: "))
+    if taskToDelete >= 0 and taskToDelete < len(tasks):
+      tasks.pop(taskToDelete)
+      print(f"Task {taskToDelete} has been removed.")
+    else:
+      print(f"Task #{taskToDelete} was not found.")
+  except:
+    print("Invalid input.")
+
+
+if __name__ == "__main__":
+  ### Create a loop to run the app
+  print("Welcome to the to do list app :)")
+  while True:
+    print("\n")
+    print("Please select one of the following options")
+    print("------------------------------------------")
+    print("1. Add a new task")
+    print("2. Delete a task")
+    print("3. List tasks")
+    print("4. Quit")
+
+    choice = input("Enter your choice: ")
+
+    if (choice == "1"):
+      addTask()
+    elif (choice == "2"):
+      deleteTask()
+    elif (choice == "3"):
+      listTasks()
+    elif (choice == "4"):
+      break
+    else:
+      print("Invalid input. Please try again.")
